@@ -1,0 +1,20 @@
+- name: Installer les paquets de base
+  hosts: webserver
+  become: true
+  tasks:
+    - name: Mettre à jour le cache apt
+      apt:
+        update_cache: true
+
+    - name: Installer vim et nginx
+      apt:
+        name:
+          - vim
+          - nginx
+        state: present
+
+    - name: Démarrer et activer nginx
+      systemd:
+        name: nginx
+        enabled: true
+        state: started

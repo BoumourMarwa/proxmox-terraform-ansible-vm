@@ -1,0 +1,1 @@
+resource "macaddress" "vm1" {}
